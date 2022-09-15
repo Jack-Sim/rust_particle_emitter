@@ -43,10 +43,6 @@ fn main() {
                 WIDTH,
             ));
         }
-        for i in (0..(p.len() - 1)).rev() {
-            if p[i].clone().finished() {
-                p.remove(i);
-            }
-        }
+        p.retain(|x| !x.clone().finished());
     }
 }
