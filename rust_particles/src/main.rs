@@ -28,12 +28,12 @@ fn main() {
     while let Some(e) = window.next() {
         window.draw_2d(&e, |c, g, _device| {
             clear([0.0, 0.0, 0.0, 1.0], g);
-            for i in 0..p.len() {
-                ellipse(color::alpha(p[i].lifetime), p[i].show(), c.transform, g);
-                p[i].update();
+            for i in &mut p {
+                ellipse(i.colour, i.show(), c.transform, g);
+                i.update();
             }
         });
-        counter = counter + 1;
+        counter += 1;
         if counter % 10 == 0 {
             p.push(particle::Particle::new(
                 vec![200., 200.],
