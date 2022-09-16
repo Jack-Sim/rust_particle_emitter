@@ -20,7 +20,7 @@ fn main() {
     while let Some(e) = window.next() {
         if counter % 10 == 0 {
             p.push(particle::Particle::new(
-                vec![200., 200.],
+                vec![f64::from(WIDTH/2), f64::from(HEIGHT/2)],
                 vec![rng.gen_range(-1.0..1.0), rng.gen_range(-1.0..1.0)],
                 vec![0.0, 0.1],
                 HEIGHT,
