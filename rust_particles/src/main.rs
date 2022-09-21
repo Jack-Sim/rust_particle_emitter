@@ -44,7 +44,7 @@ impl WindowHandler for MyWindowHandler {
             i.update();
         }
         self.counter += 1;
-        self.p.retain(|x| !x.clone().finished());
+        self.p.retain(|x| !x.finished());
 
         helper.request_redraw();
     }

@@ -1,5 +1,4 @@
 use speedy2d::dimen::Vec2;
-#[derive(Clone)]
 pub struct Particle {
     pub pos: Vec<f32>,
     pub vel: Vec<f32>,
@@ -73,7 +72,7 @@ impl Particle {
         }
     }
 
-    pub fn finished(self) -> bool {
+    pub fn finished(&self) -> bool {
         self.lifetime <= 0.
     }
 }
