@@ -1,4 +1,4 @@
-use speedy2d::dimen::Vec2;
+use speedy2d::{dimen::Vec2, color::Color};
 pub struct Particle {
     pub pos: Vec<f32>,
     pub vel: Vec<f32>,
@@ -13,14 +13,14 @@ pub struct Particle {
 }
 
 impl Particle {
-    pub fn new(pos: Vec<f32>, vel: Vec<f32>, acc: Vec<f32>, height: u32, width: u32) -> Particle {
+    pub fn new(pos: Vec<f32>, vel: Vec<f32>, acc: Vec<f32>, height: u32, width: u32, colour: [f32; 4]) -> Particle {
         Particle {
             pos,
             vel,
             acc,
             lifetime: 1.0,
             size: 5.,
-            colour: [1.0, 0.0, 0.0, 1.0],
+            colour,
             max_speed: 10.0,
             max_acc: 0.5,
             height,
@@ -36,16 +36,15 @@ impl Particle {
         self.check_limits();
         self.edges();
         self.lifetime -= 0.01;
-        self.colour = [1.0, 0.0, 0.0, self.lifetime];
+        self.colour[3] = self.lifetime;
     }
 
     pub fn particle_pos(&self) -> Vec2 {
         Vec2::new(self.pos[0], self.pos[1])
     }
 
-// This doesn't work yet
-    pub fn particle_rgba(&self) -> (f32, f32, f32, f32) {
-        (self.colour[0], self.colour[1], self.colour[2], self.colour[3])
+    pub fn particle_color(&self) -> Color {
+        Color::from_rgba(self.colour[0], self.colour[1], self.colour[2], self.colour[3])
     }
 
     fn check_limits(&mut self) {
