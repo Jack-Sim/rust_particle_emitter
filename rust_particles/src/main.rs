@@ -17,7 +17,7 @@ fn main() {
         counter: 0,
         color: [1., 0., 0., 1.],
         mouse_pos: vec![0., 0.],
-        start_pos: vec![(HEIGHT / 2) as f32, (WIDTH / 2) as f32],
+        start_pos: vec![(WIDTH / 2) as f32, (HEIGHT / 2) as f32],
     });
 }
 
